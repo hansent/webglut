@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!--  include webglut.js -->
+        <script type="text/javascript" src="src/webglut-dev.js"></script>
+
+        <!--  main.js has the applcation code, opengl drawing etc. -->
+        <script type="text/javascript" src="main.js"></script>
+
+        <!--  vertex and fragment shader -->
+        <script id="fragment-shader" type="x-shader/x-fragment">
+            #ifdef GL_ES
+            precision highp float;
+            #endif
+
+            void main(void) {
+                gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+            } </script>
+        <script id="vertex-shader" type="x-shader/x-vertex">
+            attribute vec3 aVertexPosition;
+
+            uniform mat4 uModelViewMatrix;
+            uniform mat4 uProjectionMatrix;
+
+            void main(void) {
+                gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aVertexPosition, 1.0);
+            }</script>
+    </head>
+
+    <!--  nothing fancy here...weblgut will create a fullscreen gl canvas -->
+    <body>Loading WebGl awesomeness...</body>
+</html>
